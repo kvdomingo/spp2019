@@ -1,0 +1,284 @@
+\documentclass[10pt,a4paper,twoside]{article}
+% The following LaTeX packages must be installed on your machine: amsmath, authblk, bm, booktabs, caption, dcolumn, fancyhdr, geometry, graphicx, hyperref, latexsym, natbib
+
+% Please make sure that spp.dat (supplied with this template) is in your working directory or path
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\input{spp.dat}
+
+%  Editorial staff will uncomment the next line
+% \providecommand{\artnum}[0]{XX-XX}
+% \renewcommand{\articlenum}[0]{SPP-\the\year-\artnum-}
+
+\begin{document}
+
+%--------------------------------------------------
+%  Fill in the paper's title in Sentence case
+%  Titles beginning with articles (A, An, The) are discouraged
+%--------------------------------------------------
+\title{\TitleFont Frequency domain reconstruction of stochastically sampled signals based on compressive sensing}
+
+
+%--------------------------------------------------
+% For TWO authors with the same affiliation please use this block
+% Or Please use the other author block templates
+%--------------------------------------------------
+\author[*\negthickspace]{Kenneth V. Domingo}
+\author[ ]{Maricor N.~Soriano
+\lastauthorsep}
+\affil[ ]{National Institute of Physics, University of the Philippines--Diliman, Quezon City, Philippines}
+\affil[*]{\corremail{kdomingo@nip.upd.edu.ph} }
+
+%--------------------------------------------------
+%  For three or more authors with the same affiliation please use this block
+%--------------------------------------------------
+
+% \author[*]{Author M.~Surname\authorsep}
+% \author[ ]{Bauthor D.~Surname~Jr.\authorsep}
+% \author[ ]{Cauthor D.~Surname~III\lastauthorsep}
+% \affil[ ]{Department of Science, XXX University, Country}
+% \affil[*]{\corremail{amsurname@university.edu} }
+
+%--------------------------------------------------
+%  For authors with different affiliations please use the following block
+%--------------------------------------------------
+% \author[1*]{Author M.~Surname\authorsep}
+% \author[2]{Bauthor D.~Surname~Jr.\authorsep}
+% \author[1,2]{Coauthor G.~Surname~III\authorsep}
+% % !!! Please take note that the last author separation is \lastauthorsep instead of \authorsep
+% \author[3]{Dauthor G.~Surname\lastauthorsep}
+% \affil[1]{Department of Physics, DD University, Country}
+% \affil[2]{Department of Science, XX University, Country}
+% \affil[3]{Physics Institute, Country}
+% \affil[*]{\corremail{amsurname@university.edu} }
+
+
+\begin{abstract}
+\noindent
+%--------------------------------------------------
+% Include abstract and keywords here
+%--------------------------------------------------
+The field of compressed sensing (CS) has recently been gaining traction as a viable workaround to the Nyquist-Shannon sampling theorem. This allows highly accurate signal recovery from incomplete frequency information. In this paper, we investigate the ability of compressive sampling to recover the higher harmonics of a recorded guitar signal. Sampling is done in the temporal domain, and the reconstruction is performed in the frequency domain. It is shown that even when taking a small number of random samples corresponding to some underlying sub-Nyquist rate, the base frequency, including up to fifth-order harmonics, can be recovered. The performance of three algorithms, namely least absolute shrinkage and selection operator (LASSO), orthogonal matching pursuit (OMP), and smoothed $\ell^0$ norm (SL0) algorithm in terms of computation time and reconstruction error (MSE) were investigated.
+
+\keywords{compressive sensing, norm minimization, signal processing.}
+
+\end{abstract}
+
+\maketitle
+\thispagestyle{titlestyle}
+
+
+%--------------------------------------------------
+% the main text of your paper begins here
+%--------------------------------------------------
+\section{Introduction}\label{sec:intro}
+The Nyquist-Shannon sampling theorem, in the field of analog-to-digital conversion, states that in order to digitally reconstruct a real signal, whose highest frequency component is indicated as $f_B$, and without losing any of the information contained in it, an analog-to-digital converter (ADC) must sample it at a rate $f_S$ that is at least twice this frequency; that is,
+
+\begin{equation}\label{eq:nyquistshannon}
+	f_S \geq 2f_B
+\end{equation}
+
+where the sampling rate $f_S$, if \eqref{eq:nyquistshannon} were to be treated as an equality, is known as the Nyquist rate. However, signal transmissions that utilize frequencies higher up the electromagnetic spectrum cause a need for shorter sampling periods, and maintaining precise periodic sampling on the order of nanoseconds becomes impractical to implement on ADC hardware. The emerging field of compressed sensing (CS) introduced by Cand\`{e}s, Romberg, Tao \cite{candes}, and Donoho \cite{donoho} treats the entire process of signal acquisition, conversion, and reconstruction as an underdetermined linear system, which allows sampling signals at a rate much lower than that required by the Nyquist-Shannon sampling theorem. Such a linear system, subject to specific constraints, can be solved using various methods implemented on hardware and/or software.
+
+Mathew and Premanand \cite{mathew} propose a compressive sensing method that uses a measurement matrix built from a chaotic logistic map to ensure incoherence between itself and the orthonormalization matrix. Andr\'{a}\v{s}, Dolinsk\'{y}, and \v{S}aliga \cite{andras} perform reconstruction of undersampled, one-dimensional, temporal signals directly in the time domain using stochastic sampling, as opposed to periodic, sub-Nyquist sampling. Romero, Tapang, and Saloma \cite{romero16,romero18} perform compressive sampling of 2D signals (images) directly in the Fourier domain and reconstruct via total variation minimization.
+
+In this paper, we investigate compressive sensing algorithms to reconstruct temporal signals by taking advantage of their sparse representation in the frequency domain. We apply these to recorded acoustic signals by stochastically sampling directly in the temporal domain, and performing reconstruction in the frequency domain using weighted regularization, greedy, or convex optimization algorithms. Similar to Mathew, we perform compressive sampling on pure sinusoidal tones, but in addition, we examine running time of different recovery algorithms. In contrast with Romero, we perform compressive sampling of 1D signals in the temporal domain, and reconstruct in the frequency domain via norm minimization. We tackle this research with the eventual goal of determining the frequency characteristics of compressively sampled signals for applications such as speech recording.
+
+\section{Methodology}\label{sec:Metho}
+\medskip
+
+\subsection{Compressive sensing}\label{ssec:CS}
+Consider a real-valued, one-dimensional signal $\vec{x}$, with length $N$. Let $\bm\Psi$ be some $N \times N$ sparse orthonormal basis whose column vectors can be represented as $\psi_i$. It is assumed that the signal $\vec{x}$ can be fully represented by a linear combination of $\psi_i$'s, or
+
+\begin{equation}\label{eq:sparserep}
+	\vec{x} = \bm\Psi\bm\alpha = \sum_i^N \alpha_i \psi_i
+\end{equation}
+
+where $\alpha_i$ are the sparse domain coefficients. A signal $\vec{x}$ is said to be $k$-sparse in the $\bm\Psi$ domain if it has, at most, $k$ non-zero coefficients. The compressed signal $\vec{y}$ of length $M$ ($M \ll N$) is
+
+\begin{equation}\label{eq:compressedsig}
+	\vec{y} = \bm\Phi\vec{x}
+\end{equation}
+
+where $\bm\Phi$ is referred to as the measurement matrix or sensing matrix. In order to successfully reconstruct $\vec{x}$ from $\vec{y}$, the sensing matrix must (a) obey the restricted isometry property, and (b) be incoherent with the orthonormalization matrix $\bm\Psi$ so that sparsity is maintained. The goal for CS recovery algorithms then is to search for the sparsest signal $\vec{x}$ that yields $\vec{y}$. This can be formalized as
+
+\begin{equation}\label{eq:minimize}
+	\min \norm{\vec{x}}_0 \quad \textrm{subject to} \quad \bm\Phi\vec{x} = \vec{y}
+\end{equation}
+
+where the notation $\norm{\vec{x}}_p$ denotes the $\ell_p$-norm of a vector $\vec{x}$. The $\ell_0$ pseudo-norm simply returns the number of non-zero elements in $\vec{x}$, and minimizing it is an NP-hard problem. Computational complexity can be reduced by applying certain constraints and minimizing the $\ell_1$-norm instead, defined as
+
+\begin{equation}\label{eq:l1norm}
+	\norm{\vec{x}}_1 = \sum_i \abs{x_i}
+\end{equation}
+
+The sparse approximation methods used to minimize \eqref{eq:l1norm} generally fall into convex optimization, greedy, and regression/regularization algorithms.
+
+\subsection{Stochastic sampling}\label{ssec:subsample}
+The acoustic signal $\vec{x}$ with length $N$ is sampled at $M$ uniformly distributed random points in the signal. This is done so that there is no coherent aliasing effect, as opposed to sub-Nyquist periodic sampling, which loses all information regarding frequencies beyond the Nyquist rate. The number of random samples is chosen while taking into account the underlying Nyquist rate, i.e. if the Nyquist rate is $f_B$ Hz, we take $< f_B$ random samples. The sampling process can be visualized as
+
+\begin{equation}\label{eq:randomsample}
+	\vec{y} = \sum_{r_i} x_{r_i}, \quad r_i \in \textrm{random}\left[ 0, N \right) \in \mathbb{Z}
+\end{equation}
+
+A guitar playing a single note was used test signals to demonstrate compressive sensing on a temporal signal. The audio signals were first sampled at the standard 44.1 kHz. Since the sensing matrix scales with the input signal accordingly with a factor $MN$, it is impractical to process the entire signal at that rate for more than $1/8$ of a second. Thus, we downsample the input signal to a rate such that the desired $n$th-order harmonic is preserved, i.e. we satisfy the Nyquist-Shannon theorem for the harmonic frequency of our choosing. We then take $M$ uniformly distributed random samples from this downsampled signal and feed it into the preferred reconstruction algorithm.
+
+\subsection{Construction of orthonormal and measurement bases}\label{ssec:bases}
+The orthonormal basis $\bm\Psi$, in the context of CS, is generally chosen such that it is easy to generate and yields a real-valued output, thereby reducing computation time; in this case, a discrete cosine transform (DCT) matrix. The measurement basis $\bm\Phi$ is composed of randomly selected rows of $\bm\Psi$. The indices corresponding to the obtained random data points in Section \ref{ssec:subsample} are the same indices corresponding to the rows of $\bm\Psi$ that are to be taken. To wit,
+
+\begin{equation}\label{eq:constructbasis}
+	\bm\Phi = \mqty[ \qty(\psi^\top)_{r_1} & \qty(\psi^\top)_{r_2} & \hdots  & \qty(\psi^\top)_{r_M} ]^\top
+\end{equation}
+
+where $\qty(\psi^\top)_{r_i}$ are the $r_i$th row vectors of $\bm\Psi$.
+
+\subsection{Signal reconstruction methods}\label{ssec:recon}
+Many algorithms exist that attempt to solve underdetermined linear systems using a variety of approaches. The ones which are utilized here involve least absolute shrinkage and selection operator (LASSO) \cite{pyrunner}, which has the optimization objective
+
+\begin{equation}\label{eq:lasso}
+	\frac{1}{2M} \norm{\vec{y} - \bm\Phi w}_2^2 + \alpha \norm{w}_1
+\end{equation}
+
+where $w$ is some loss function and $\alpha$ is a regularization parameter; orthogonal matching pursuit (OMP) \cite{sklearn}, which has the approximation objective
+
+\begin{equation}\label{eq:omp}
+	\min_x \norm{\vec{y} - \bm\Phi\vec{x}}_2^2 \quad \textrm{subject to} \quad \norm{\vec{x}}_0 \leq M
+\end{equation}
+
+and smoothed $\ell^0$ norm (SL0) algorithm \cite{sl0} which attempts to approximate the $\ell_0$-norm directly using a Gaussian function of the form
+
+\begin{equation}\label{eq:sl0-kernel}
+	\lim_{\sigma \rightarrow 0} x_i \exp(-\frac{x_i^2}{2\sigma^2})
+\end{equation}
+
+and a modified Newton detection is used as a search party to reconstruct the signal \cite{zhou}.
+
+\section{Results and Discussion}\label{sec:RnD}
+
+To investigate the CS algorithm's performance with real acoustic signals while factoring in noise, an acoustic guitar playing a single E$_4$ (330 Hz) note at 8 kHz sampling rate for 4 seconds was recorded. Figure \ref{fig:record-orig} shows the temporal and frequency domain representations. A quick glance at the frequency spectrum evidently shows the base frequency as the highest peak and its harmonics as the succeeding peaks. Compressive sampling was performed directly in the temporal domain, and a sampling rate of 1000 was selected, corresponding to 4000 samples or 50\% of the original number of samples, which also corresponds to satisfying the Nyquist criterion for frequencies $\leq$ 500 Hz. The compressed signal's temporal and frequency domain representations are shown in Figure \ref{fig:record-comp}, and it can be observed that information is smeared throughout the entire frequency spectrum. Reconstruction was performed using LASSO weighted regularization algorithm, and the result is shown in Figure \ref{fig:record-recon-lasso}. The frequency domain representation shows successful recovery of the base frequency, along with the first five harmonics, which are easily distinguishable from the noise. In the temporal domain representation, the amplitude envelope also closely mirrors the original, with the exception of additional audible noise at the release stage of the envelope.
+
+Table \ref{tab:compare} compares the performances of the three algorithms in terms of running time and mean-squared reconstruction error. In terms of running time, LASSO consistently converges fastest, followed by SL0, then OMP. In terms of MSE, however, OMP produces the least error, followed by LASSO, and then by SL0. Thus, if running were not a constraint, OMP gives the best reconstruction. Otherwise, LASSO would be the best choice of algorithm as it strikes a balance between running time and reconstruction error. Figure \ref{fig:process-time} shows how the runtime scales with the number of samples to be processed. LASSO and SL0 appear to scale linearly with the number of samples, while OMP scales quadratically. Figure \ref{fig:mse} shows how the MSE scales with the number of samples. No definite trend can be concluded. However, it is evident that OMP consistently performs the best, and the rest follows the same conclusion as Table \ref{tab:compare}.
+
+%To investigate the performance of the CS algorithm for a 2D signal (image), M.C. Escher's ``Relativity'' was selected as the test image, with a resolution of $1600 \times 981$ pixels. The image was chosen specifically because it is in grayscale and is composed purely of lines. The original image is shown in Figure \ref{fig:orig-escher}. This was then compressively sampled directly in the spatial domain at 50\% of the total samples, corresponding to 784,800 uniformly distributed random pixel locations. The compressed signal to be fed to the algorithm as shown in Figure \ref{fig:comp-escher}. Using convex optimization algorithm, the reconstructed image is shown in Figure \ref{fig:recover-escher}, and shows a very clean result aside from some dithering involving vertical lines.
+
+\begin{table}[!htb]
+	\centering
+	\caption{Runtime and MSE per algorithm using 50\% of original samples, average over 10 iterations.}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Algorithm & Runtime & MSE \\ \hline
+		LASSO & 49 s & 415.82 \\
+		OMP & 180 s & 170.81 \\ 
+		SL0 & 74 s & 605.14 \\ \hline
+	\end{tabular}
+	\label{tab:compare}
+\end{table}
+
+\begin{figure}[!htb]
+	\centering
+	\begin{subfigure}{0.45\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{processtime.png}
+		\caption{Computation time}
+		\label{fig:process-time}
+	\end{subfigure}
+	\begin{subfigure}{0.45\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{mse.png}
+		\caption{MSE}
+		\label{fig:mse}
+	\end{subfigure}
+	\caption{Comparison of performances of three algorithms for 10-50\% of samples, average over 10 iterations.}
+	\label{fig:comparison}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\linewidth]{E1_original.png}
+	\caption{Temporal and frequency domain representations of the recorded guitar signal at 330 Hz.}
+	\label{fig:record-orig}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\linewidth]{E1_comp.png}
+	\caption{Temporal and frequency domain representations of the compressively sampled guitar signal.}
+	\label{fig:record-comp}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\linewidth]{E1_recon_lasso.png}
+	\caption{Temporal and frequency domain representations of the recorded guitar signal reconstructed using LASSO.}
+	\label{fig:record-recon-lasso}
+\end{figure}
+
+%\begin{figure}[tb]
+%	\centering
+%	\includegraphics[width=\linewidth]{orig_escher.png}
+%	\caption{\textit{Relativity}, M.C. Escher, used as test image.}
+%	\label{fig:orig-escher}
+%\end{figure}
+
+%\begin{figure}[tb]
+%	\centering
+%	\includegraphics[width=\linewidth]{comp_escher.png}
+%	\caption{Compressively sampled \textit{Relativity} in spatial domain.}
+%	\label{fig:comp-escher}
+%\end{figure}
+%\begin{figure}[tb]
+%	\centering
+%	\includegraphics[width=\linewidth]{recov_escher.png}
+%	\caption{Reconstructed \textit{Relativity} using convex optimization algorithm.}
+%	\label{fig:recover-escher}
+%\end{figure}
+
+\section{Conclusions}\label{sec:Conc}
+Audio was shown to have good reconstruction potential when stochastically sampled at a rate much lower than that required by the Nyquist-Shannon sampling theorem. The recovery of higher-order harmonics was also demonstrated while being able to distinguish it from noise or erroneously reconstructed non-zero coefficients, even when sampling at a rate below that harmonic's frequency. The CS algorithm was applied on a recorded guitar playing a single note, and the quality of reconstruction was qualitatively shown in the temporal and frequency representations of the signal. Comparison of the three different reconstruction algorithms used, namely LASSO, OMP, and SL0, showed that LASSO has superior performance in terms of running time, but OMP is superior in terms of reconstruction error in MSE.
+
+%\section*{Acknowledgments}
+
+
+\clearpage
+% Please use the style file spp-bst.bst. If you wish to use BibTeX, kindly use us the filename bibfile.bib for your bib file.
+\bibliographystyle{spp.bst}
+\begin{thebibliography}{1}
+\label{sec:Ref}
+
+\bibitem[Cand\`{e}s, Romberg, and Tao(2006)]{candes}
+Cand\`{e}s, E., Romberg, J., and Tao, T. (2006). Robust uncertainty principles: Exact signal reconstruction from highly incomplete frequency information. \textit{Information Theory, IEEE Trans. on.}: 489-509.
+
+\bibitem[Donoho(2006)]{donoho}
+Donoho, D. (2006). Compressed sensing. \textit{Information Theory, IEEE Trans. on.}: 1289-1306.
+
+%\bibitem[Yanwei(2015)]{yanwei}
+%Yanwei, X., Jianhua, Z., and Ping, Z. (2015). Compressed sensing based multi-rate sub-Nyquist sampling system. \textit{Journ. of China Univ. of Posts and Telecomm. \textbf{22}}(2): 89-95.
+
+\bibitem[Mathew(2016)]{mathew}
+Mathew, M.R., and Premanand, B. (2016). Sub-Nyquist sampling of acoustic signals based on chaotic compressed sensing. \textit{Procedia Technology \textbf{24}}: 941-948.
+
+\bibitem[Andr\'{a}\v{s} et al.(2018)]{andras}
+Andr\'{a}\v{s}, I., Dolinsk\'{y}, P., Michaeli, L., and \v{S}aliga, J. (2018). A time domain reconstruction method of randomly sampled frequency sparse signal. \textit{Measurement \textbf{127}}: 68-77.
+
+\bibitem[Romero(2016)]{romero16}
+Romero, R.A., Tapang, G.A., and Saloma, C.A. (2016). Compressive sensing on the Fourier domain as a method for increasing image signal-to-noise ratio. \textit{Proceedings of the 34\textsuperscript{th} Samahang Pisika ng Pilipinas Physics Conference}: SPP-2016-PA-14-1.
+
+\bibitem[Romero(2018)]{romero18}
+Romero, R.A., Tapang, G.A., and Saloma, C.A. (2018). Robustness of compressive Fourier-domain sampling against rounding-off errors and noise. \textit{Proceedings of the 36\textsuperscript{th} Samahang Pisika ng Pilipinas Physics Conference}: SPP-2018-PB-21-1.
+
+\bibitem[Taylor(2016)]{pyrunner}
+Taylor, R. (2016). Compressed sensing in Python. Retrieved from \textit{Pyrunner}: \url{http://www.pyrunner.com/weblog/2016/05/26/compressed-sensing-python/}.
+
+\bibitem[Pedregosa et al.(2011)]{sklearn}
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., et al. (2011). Scikit-learn: Machine learning in Python. \textit{Journ. of Machine Learn. Research \textbf{12}}: 2825-2830.
+
+\bibitem[Mohimani et al. (2008)]{sl0}
+Mohimani, H., Babaie-Zadeh, M., and Jutten, C. (2008). A fast approach for overcomplete sparse decomposition based on smoothed $\ell^0$ norm. Retrieved from \textit{arXiv}: \texttt{\href{https://arxiv.org/abs/0809.2508v2}{arXiv:0809.2508v2}}.
+
+\bibitem[Zhou et al. (2016)]{zhou}
+Zhou, N., Pan, S., Cheng, S., and Zhou, Z. (2016). Image compression-encryption scheme based on hyper-chaotic system and 2D compressive sensing. \textit{Optics \& Laser Tech. \textbf{82}}: 121-133.
+
+\end{thebibliography}
+
+\end{document}
