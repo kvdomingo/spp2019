@@ -81,9 +81,9 @@ The Nyquist-Shannon sampling theorem, in the field of analog-to-digital conversi
 
 where the sampling rate $f_S$, if \eqref{eq:nyquistshannon} were to be treated as an equality, is known as the Nyquist rate. However, signal transmissions that utilize frequencies higher up the electromagnetic spectrum cause a need for shorter sampling periods, and maintaining precise periodic sampling on the order of nanoseconds becomes impractical to implement on ADC hardware. The emerging field of compressed sensing (CS) introduced by Cand\`{e}s, Romberg, Tao \cite{candes}, and Donoho \cite{donoho} treats the entire process of signal acquisition, conversion, and reconstruction as an underdetermined linear system, which allows sampling signals at a rate much lower than that required by the Nyquist-Shannon sampling theorem. Such a linear system, subject to specific constraints, can be solved using various methods implemented on hardware and/or software.
 
-Mathew and Premanand \cite{mathew} propose a compressive sensing method that uses a measurement matrix built from a chaotic logistic map to ensure incoherence between itself and the orthonormalization matrix. Andr\'{a}\v{s}, Dolinsk\'{y}, and \v{S}aliga \cite{andras} perform reconstruction of undersampled, one-dimensional, temporal signals directly in the time domain using stochastic sampling, as opposed to periodic, sub-Nyquist sampling. Romero, Tapang, and Saloma \cite{romero16,romero18} perform compressive sampling of 2D signals (images) directly in the Fourier domain and reconstruct via total variation minimization.
+Mathew and Premanand \cite{mathew} proposed a compressive sensing method that uses a measurement matrix built from a chaotic logistic map to ensure incoherence between itself and the orthonormalization matrix. Andr\'{a}\v{s}, Dolinsk\'{y}, and \v{S}aliga \cite{andras} perform reconstruction of undersampled, one-dimensional, temporal signals directly in the time domain using stochastic sampling, as opposed to periodic, sub-Nyquist sampling. Romero, Tapang, and Saloma \cite{romero16,romero18} perform compressive sampling of 2D signals (images) directly in the Fourier domain and reconstruct via total variation minimization.
 
-In this paper, we investigate compressive sensing algorithms to reconstruct temporal signals by taking advantage of their sparse representation in the frequency domain. We apply these to recorded acoustic signals by stochastically sampling directly in the temporal domain, and performing reconstruction in the frequency domain using weighted regularization, greedy, or convex optimization algorithms. Similar to Mathew, we perform compressive sampling on pure sinusoidal tones, but in addition, we examine running time of different recovery algorithms. In contrast with Romero, we perform compressive sampling of 1D signals in the temporal domain, and reconstruct in the frequency domain via norm minimization. We tackle this research with the eventual goal of determining the frequency characteristics of compressively sampled signals for applications such as speech recording.
+In this paper, we compare the performance of compressive sensing algorithms in reconstructing temporal signals in terms of speed and signal quality. We apply these to recorded acoustic signals by stochastically sampling directly in the temporal domain, and performing reconstruction in the frequency domain using weighted regularization, greedy, or convex optimization algorithms. Similar to Mathew, we perform compressive sampling on pure sinusoidal tones, and examine running time of different recovery algorithms. In contrast with Romero, we perform compressive sampling of 1D signals in the temporal domain, and reconstruct in the frequency domain via norm minimization. We tackle this research with the eventual goal of determining the frequency characteristics of compressively sampled signals for applications such as speech recording.
 
 \section{Methodology}\label{sec:Metho}
 \medskip
@@ -195,21 +195,21 @@ Table \ref{tab:compare} compares the performances of the three algorithms in ter
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.9\linewidth]{E1_original.png}
+	\includegraphics[width=0.85\linewidth]{E1_original.png}
 	\caption{Temporal and frequency domain representations of the recorded guitar signal at 330 Hz.}
 	\label{fig:record-orig}
 \end{figure}
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.9\linewidth]{E1_comp.png}
+	\includegraphics[width=0.85\linewidth]{E1_comp.png}
 	\caption{Temporal and frequency domain representations of the compressively sampled guitar signal.}
 	\label{fig:record-comp}
 \end{figure}
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.9\linewidth]{E1_recon_lasso.png}
+	\includegraphics[width=0.85\linewidth]{E1_recon_lasso.png}
 	\caption{Temporal and frequency domain representations of the recorded guitar signal reconstructed using LASSO.}
 	\label{fig:record-recon-lasso}
 \end{figure}
@@ -240,7 +240,6 @@ Audio was shown to have good reconstruction potential when stochastically sample
 %\section*{Acknowledgments}
 
 
-\clearpage
 % Please use the style file spp-bst.bst. If you wish to use BibTeX, kindly use us the filename bibfile.bib for your bib file.
 \bibliographystyle{spp.bst}
 \begin{thebibliography}{1}
