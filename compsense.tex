@@ -156,11 +156,9 @@ and a modified Newton detection is used as a search party to reconstruct the sig
 
 \section{Results and Discussion}\label{sec:RnD}
 
-To investigate the CS algorithm's performance with real acoustic signals while factoring in noise, an acoustic guitar playing a single E$_4$ (330 Hz) note at 8 kHz sampling rate for 4 seconds was recorded. Figure \ref{fig:record-orig} shows the temporal and frequency domain representations. A quick glance at the frequency spectrum evidently shows the base frequency as the highest peak and its harmonics as the succeeding peaks. Compressive sampling was performed directly in the temporal domain, and a sampling rate of 1000 was selected, corresponding to 4000 samples or 50\% of the original number of samples, which also corresponds to satisfying the Nyquist criterion for frequencies $\leq$ 500 Hz. The compressed signal's temporal and frequency domain representations are shown in Figure \ref{fig:record-comp}, and it can be observed that information is smeared throughout the entire frequency spectrum. Reconstruction was performed using LASSO weighted regularization algorithm, and the result is shown in Figure \ref{fig:record-recon-lasso}. The frequency domain representation shows successful recovery of the base frequency, along with the first five harmonics, which are easily distinguishable from the noise. In the temporal domain representation, the amplitude envelope also closely mirrors the original, with the exception of additional audible noise at the release stage of the envelope.
+To investigate the CS algorithm's performance with real acoustic signals while factoring in noise, an acoustic guitar playing a single E$_4$ (330 Hz) note at 8 kHz sampling rate for 4 seconds was recorded. Figure \ref{fig:record-orig} shows the temporal and frequency domain representations. A quick glance at the frequency spectrum evidently shows the base frequency as the highest peak and its harmonics as the succeeding peaks. Compressive sampling was performed directly in the temporal domain, and a sampling rate of 1000 was selected, corresponding to 4000 samples or 50\% of the original number of samples, which also corresponds to satisfying the Nyquist criterion for frequencies $\leq$ 500 Hz. The compressed signal's temporal and frequency domain representations are shown in Fig. \ref{fig:record-comp}, and it can be observed that information is smeared throughout the entire frequency spectrum. Reconstruction was performed using LASSO weighted regularization algorithm, and the result is shown in Fig. \ref{fig:record-recon-lasso}. The frequency domain representation shows successful recovery of the base frequency, along with the first five harmonics, which are easily distinguishable from the noise. In the temporal domain representation, the amplitude envelope also closely mirrors the original, with the exception of additional audible noise at the release stage of the envelope.
 
-Table \ref{tab:compare} compares the performances of the three algorithms in terms of running time and mean-squared reconstruction error. In terms of running time, LASSO consistently converges fastest, followed by SL0, then OMP. In terms of MSE, however, OMP produces the least error, followed by LASSO, and then by SL0. Thus, if running were not a constraint, OMP gives the best reconstruction. Otherwise, LASSO would be the best choice of algorithm as it strikes a balance between running time and reconstruction error. Figure \ref{fig:process-time} shows how the runtime scales with the number of samples to be processed. LASSO and SL0 appear to scale linearly with the number of samples, while OMP scales quadratically. Figure \ref{fig:mse} shows how the MSE scales with the number of samples. No definite trend can be concluded. However, it is evident that OMP consistently performs the best, and the rest follows the same conclusion as Table \ref{tab:compare}.
-
-%To investigate the performance of the CS algorithm for a 2D signal (image), M.C. Escher's ``Relativity'' was selected as the test image, with a resolution of $1600 \times 981$ pixels. The image was chosen specifically because it is in grayscale and is composed purely of lines. The original image is shown in Figure \ref{fig:orig-escher}. This was then compressively sampled directly in the spatial domain at 50\% of the total samples, corresponding to 784,800 uniformly distributed random pixel locations. The compressed signal to be fed to the algorithm as shown in Figure \ref{fig:comp-escher}. Using convex optimization algorithm, the reconstructed image is shown in Figure \ref{fig:recover-escher}, and shows a very clean result aside from some dithering involving vertical lines.
+Table \ref{tab:compare} compares the performances of the three algorithms in terms of running time and mean-squared reconstruction error. In terms of running time, LASSO consistently converges fastest, followed by SL0, then OMP. In terms of MSE, however, OMP produces the least error, followed by LASSO, and then by SL0. Thus, if running time were not a constraint, OMP gives the best reconstruction. Otherwise, LASSO would be the best choice of algorithm as it strikes a balance between running time and reconstruction error. Figure \ref{fig:process-time} shows how the runtime scales with the number of samples to be processed. LASSO and SL0 appear to scale linearly with the number of samples, while OMP scales quadratically. Figure \ref{fig:mse} shows how the MSE scales with the number of samples. No definite trend can be concluded. However, it is evident that OMP consistently performs the best, and the rest follows the same conclusion as Table \ref{tab:compare}.
 
 \begin{table}[!htb]
 	\centering
@@ -177,6 +175,29 @@ Table \ref{tab:compare} compares the performances of the three algorithms in ter
 
 \begin{figure}[!htb]
 	\centering
+	\begin{subfigure}{0.32\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{E1_original.png}
+		\caption{original signal}
+		\label{fig:record-orig}
+	\end{subfigure}
+	\begin{subfigure}{0.32\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{E1_comp.png}
+		\caption{compressively sampled signal}
+		\label{fig:record-comp}
+	\end{subfigure}
+	\begin{subfigure}{0.32\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{E1_recon_lasso.png}
+		\caption{reconstructed signal}
+		\label{fig:record-recon-lasso}
+	\end{subfigure}
+	\caption{Temporal and frequency domain representations of the guitar signal at 330 Hz.}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
 	\begin{subfigure}{0.45\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{processtime.png}
@@ -189,50 +210,10 @@ Table \ref{tab:compare} compares the performances of the three algorithms in ter
 		\caption{MSE}
 		\label{fig:mse}
 	\end{subfigure}
-	\caption{Comparison of performances of three algorithms for 10-50\% of samples, average over 10 iterations.}
+	\caption{Comparison of performances of three algorithms for 10--50\% of samples, average over 10 iterations.}
 	\label{fig:comparison}
 \end{figure}
 
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=0.85\linewidth]{E1_original.png}
-	\caption{Temporal and frequency domain representations of the recorded guitar signal at 330 Hz.}
-	\label{fig:record-orig}
-\end{figure}
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=0.85\linewidth]{E1_comp.png}
-	\caption{Temporal and frequency domain representations of the compressively sampled guitar signal.}
-	\label{fig:record-comp}
-\end{figure}
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=0.85\linewidth]{E1_recon_lasso.png}
-	\caption{Temporal and frequency domain representations of the recorded guitar signal reconstructed using LASSO.}
-	\label{fig:record-recon-lasso}
-\end{figure}
-
-%\begin{figure}[tb]
-%	\centering
-%	\includegraphics[width=\linewidth]{orig_escher.png}
-%	\caption{\textit{Relativity}, M.C. Escher, used as test image.}
-%	\label{fig:orig-escher}
-%\end{figure}
-
-%\begin{figure}[tb]
-%	\centering
-%	\includegraphics[width=\linewidth]{comp_escher.png}
-%	\caption{Compressively sampled \textit{Relativity} in spatial domain.}
-%	\label{fig:comp-escher}
-%\end{figure}
-%\begin{figure}[tb]
-%	\centering
-%	\includegraphics[width=\linewidth]{recov_escher.png}
-%	\caption{Reconstructed \textit{Relativity} using convex optimization algorithm.}
-%	\label{fig:recover-escher}
-%\end{figure}
 
 \section{Conclusions}\label{sec:Conc}
 Audio was shown to have good reconstruction potential when stochastically sampled at a rate much lower than that required by the Nyquist-Shannon sampling theorem. The recovery of higher-order harmonics was also demonstrated while being able to distinguish it from noise or erroneously reconstructed non-zero coefficients, even when sampling at a rate below that harmonic's frequency. The CS algorithm was applied on a recorded guitar playing a single note, and the quality of reconstruction was qualitatively shown in the temporal and frequency representations of the signal. Comparison of the three different reconstruction algorithms used, namely LASSO, OMP, and SL0, showed that LASSO has superior performance in terms of running time, but OMP is superior in terms of reconstruction error in MSE.
@@ -240,44 +221,10 @@ Audio was shown to have good reconstruction potential when stochastically sample
 %\section*{Acknowledgments}
 
 
-% Please use the style file spp-bst.bst. If you wish to use BibTeX, kindly use us the filename bibfile.bib for your bib file.
-\bibliographystyle{spp.bst}
-\begin{thebibliography}{1}
-\label{sec:Ref}
+% Please use the style file spp-bst.bst. If you wish to use BibTeX, kindly use us the filename bibfile.bib 
+%for your bib file.
 
-\bibitem[Cand\`{e}s, Romberg, and Tao(2006)]{candes}
-Cand\`{e}s, E., Romberg, J., and Tao, T. (2006). Robust uncertainty principles: Exact signal reconstruction from highly incomplete frequency information. \textit{Information Theory, IEEE Trans. on.}: 489-509.
-
-\bibitem[Donoho(2006)]{donoho}
-Donoho, D. (2006). Compressed sensing. \textit{Information Theory, IEEE Trans. on.}: 1289-1306.
-
-%\bibitem[Yanwei(2015)]{yanwei}
-%Yanwei, X., Jianhua, Z., and Ping, Z. (2015). Compressed sensing based multi-rate sub-Nyquist sampling system. \textit{Journ. of China Univ. of Posts and Telecomm. \textbf{22}}(2): 89-95.
-
-\bibitem[Mathew(2016)]{mathew}
-Mathew, M.R., and Premanand, B. (2016). Sub-Nyquist sampling of acoustic signals based on chaotic compressed sensing. \textit{Procedia Technology \textbf{24}}: 941-948.
-
-\bibitem[Andr\'{a}\v{s} et al.(2018)]{andras}
-Andr\'{a}\v{s}, I., Dolinsk\'{y}, P., Michaeli, L., and \v{S}aliga, J. (2018). A time domain reconstruction method of randomly sampled frequency sparse signal. \textit{Measurement \textbf{127}}: 68-77.
-
-\bibitem[Romero(2016)]{romero16}
-Romero, R.A., Tapang, G.A., and Saloma, C.A. (2016). Compressive sensing on the Fourier domain as a method for increasing image signal-to-noise ratio. \textit{Proceedings of the 34\textsuperscript{th} Samahang Pisika ng Pilipinas Physics Conference}: SPP-2016-PA-14-1.
-
-\bibitem[Romero(2018)]{romero18}
-Romero, R.A., Tapang, G.A., and Saloma, C.A. (2018). Robustness of compressive Fourier-domain sampling against rounding-off errors and noise. \textit{Proceedings of the 36\textsuperscript{th} Samahang Pisika ng Pilipinas Physics Conference}: SPP-2018-PB-21-1.
-
-\bibitem[Taylor(2016)]{pyrunner}
-Taylor, R. (2016). Compressed sensing in Python. Retrieved from \textit{Pyrunner}: \url{http://www.pyrunner.com/weblog/2016/05/26/compressed-sensing-python/}.
-
-\bibitem[Pedregosa et al.(2011)]{sklearn}
-Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., et al. (2011). Scikit-learn: Machine learning in Python. \textit{Journ. of Machine Learn. Research \textbf{12}}: 2825-2830.
-
-\bibitem[Mohimani et al. (2008)]{sl0}
-Mohimani, H., Babaie-Zadeh, M., and Jutten, C. (2008). A fast approach for overcomplete sparse decomposition based on smoothed $\ell^0$ norm. Retrieved from \textit{arXiv}: \texttt{\href{https://arxiv.org/abs/0809.2508v2}{arXiv:0809.2508v2}}.
-
-\bibitem[Zhou et al. (2016)]{zhou}
-Zhou, N., Pan, S., Cheng, S., and Zhou, Z. (2016). Image compression-encryption scheme based on hyper-chaotic system and 2D compressive sensing. \textit{Optics \& Laser Tech. \textbf{82}}: 121-133.
-
-\end{thebibliography}
+\bibliographystyle{spp-bst}
+\bibliography{compbib}
 
 \end{document}

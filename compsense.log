@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6800 64-bit) (preloaded format=pdflatex 2019.1.18)  12 APR 2019 13:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6800 64-bit) (preloaded format=pdflatex 2019.1.18)  4 MAY 2019 00:37
 entering extended mode
 **./compsense.tex
 (compsense.tex
@@ -646,76 +646,74 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
  [1
 
 {C:/Users/Kenneth/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-<processtime.png, id=95, 548.7702pt x 323.7696pt>
-File: processtime.png Graphic file (type png)
-<use processtime.png>
-Package pdftex.def Info: processtime.png  used on input line 182.
-(pdftex.def)             Requested size: 204.85846pt x 120.86493pt.
-<mse.png, id=97, 548.7702pt x 323.7696pt>
-File: mse.png Graphic file (type png)
-<use mse.png>
-Package pdftex.def Info: mse.png  used on input line 188.
-(pdftex.def)             Requested size: 204.85846pt x 120.86493pt.
-<E1_original.png, id=98, 1059.2373pt x 338.2236pt>
+<E1_original.png, id=95, 604.1772pt x 366.4089pt>
 File: E1_original.png Graphic file (type png)
 <use E1_original.png>
-Package pdftex.def Info: E1_original.png  used on input line 198.
-(pdftex.def)             Requested size: 386.96027pt x 123.56154pt.
-<E1_comp.png, id=99, 1064.2962pt x 338.2236pt>
+Package pdftex.def Info: E1_original.png  used on input line 180.
+(pdftex.def)             Requested size: 145.68144pt x 88.34807pt.
+<E1_comp.png, id=97, 596.4684pt x 366.4089pt>
 File: E1_comp.png Graphic file (type png)
 <use E1_comp.png>
-Package pdftex.def Info: E1_comp.png  used on input line 205.
-(pdftex.def)             Requested size: 386.96027pt x 122.9732pt.
-<E1_recon_lasso.png, id=100, 1064.2962pt x 338.2236pt>
+Package pdftex.def Info: E1_comp.png  used on input line 186.
+(pdftex.def)             Requested size: 145.68144pt x 89.48862pt.
+<E1_recon_lasso.png, id=98, 572.8602pt x 366.4089pt>
 File: E1_recon_lasso.png Graphic file (type png)
 <use E1_recon_lasso.png>
-Package pdftex.def Info: E1_recon_lasso.png  used on input line 212.
-(pdftex.def)             Requested size: 386.96027pt x 122.9732pt.
- [3] [4 <./processtime.png> <./mse.png> <./E1_original.png> <./E1_comp.png> <./
-E1_recon_lasso.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 283.
+Package pdftex.def Info: E1_recon_lasso.png  used on input line 192.
+(pdftex.def)             Requested size: 145.68144pt x 93.17863pt.
+<processtime.png, id=99, 548.7702pt x 323.7696pt>
+File: processtime.png Graphic file (type png)
+<use processtime.png>
+Package pdftex.def Info: processtime.png  used on input line 203.
+(pdftex.def)             Requested size: 204.85846pt x 120.86493pt.
+<mse.png, id=100, 548.7702pt x 323.7696pt>
+File: mse.png Graphic file (type png)
+<use mse.png>
+Package pdftex.def Info: mse.png  used on input line 209.
+(pdftex.def)             Requested size: 204.85846pt x 120.86493pt.
+ [3] (compsense.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 230.
 
-[5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 283.
+[4 <./E1_original.png> <./E1_comp.png> <./E1_recon_lasso.png> <./processtime.pn
+g> <./mse.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 230.
  (compsense.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 283.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 283.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 230.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 230.
 Package rerunfilecheck Info: File `compsense.out' has not changed.
 (rerunfilecheck)             Checksum: 6DB602CACE48A54B60201C7762B41675;516.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 283.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 230.
  ) 
 Here is how much of TeX's memory you used:
- 18287 strings out of 492973
- 311760 string characters out of 3135926
- 388947 words of memory out of 3000000
- 21969 multiletter control sequences out of 15000+200000
- 546111 words of font info for 77 fonts, out of 3000000 for 9000
+ 18298 strings out of 492973
+ 311966 string characters out of 3135926
+ 389160 words of memory out of 3000000
+ 21981 multiletter control sequences out of 15000+200000
+ 545403 words of font info for 75 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 47i,13n,65p,1445b,529s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 47i,13n,65p,1441b,529s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><D:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><D:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmmi5.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmmi7.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmm
-i9.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb>
-<D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><D:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmr9.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmsy10.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.p
-fb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/P
-rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti7.pfb><D:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><D:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><D:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on compsense.pdf (5 pages, 1264886 bytes).
+X 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmmi5.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmmi7.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmmi9.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><D:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmr9.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+msy7.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb
+><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><D:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><D:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on compsense.pdf (4 pages, 936406 bytes).
 PDF statistics:
- 221 PDF objects out of 1000 (max. 8388607)
- 40 named destinations out of 1000 (max. 500000)
+ 209 PDF objects out of 1000 (max. 8388607)
+ 37 named destinations out of 1000 (max. 500000)
  90 words of extra memory for PDF output out of 10000 (max. 10000000)
 
