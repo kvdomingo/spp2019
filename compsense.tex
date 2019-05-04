@@ -163,12 +163,12 @@ Table \ref{tab:compare} compares the performances of the three algorithms in ter
 \begin{table}[!htb]
 	\centering
 	\caption{Runtime and MSE per algorithm using 50\% of original samples, average over 10 iterations.}
-	\begin{tabular}{|c|c|c|}
+	\begin{tabular}{|c|c|c|c|}
 		\hline
-		Algorithm & Runtime & MSE \\ \hline
-		LASSO & 49 s & 415.82 \\
-		OMP & 180 s & 170.81 \\ 
-		SL0 & 74 s & 605.14 \\ \hline
+		Algorithm & Complexity & Runtime & MSE \\ \hline
+		LASSO & $\mathcal{O}(k^2 M)$ & 49 s & 415.82 \\
+		OMP & $\mathcal{O}(kMN)$ & 180 s & 170.81 \\ 
+		SL0 & $\mathcal{O}(k\log(M))$ & 74 s & 605.14 \\ \hline
 	\end{tabular}
 	\label{tab:compare}
 \end{table}

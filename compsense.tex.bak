@@ -163,35 +163,37 @@ Table \ref{tab:compare} compares the performances of the three algorithms in ter
 \begin{table}[!htb]
 	\centering
 	\caption{Runtime and MSE per algorithm using 50\% of original samples, average over 10 iterations.}
-	\begin{tabular}{|c|c|c|}
+	\begin{tabular}{|c|c|c|c|}
 		\hline
-		Algorithm & Runtime & MSE \\ \hline
-		LASSO & 49 s & 415.82 \\
-		OMP & 180 s & 170.81 \\ 
-		SL0 & 74 s & 605.14 \\ \hline
+		Algorithm & Complexity & Runtime & MSE \\ \hline
+		LASSO & $\mathcal{O}(k^2 M)$ & 49 s & 415.82 \\
+		OMP & $\mathcal{O}(kMN)$ & 180 s & 170.81 \\ 
+		SL0 & $\mathcal{O}(k\log(M))$ & 74 s & 605.14 \\ \hline
 	\end{tabular}
 	\label{tab:compare}
 \end{table}
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.6\linewidth]{E1_original.png}
-	\caption{Temporal and frequency domain representations of the recorded guitar signal at 330 Hz.}
-	\label{fig:record-orig}
-\end{figure}
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=0.6\linewidth]{E1_comp.png}
-	\caption{Temporal and frequency domain representations of the compressively sampled guitar signal.}
-	\label{fig:record-comp}
-\end{figure}
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=0.85\linewidth]{E1_recon_lasso.png}
-	\caption{Temporal and frequency domain representations of the recorded guitar signal reconstructed using LASSO.}
-	\label{fig:record-recon-lasso}
+	\begin{subfigure}{0.32\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{E1_original.png}
+		\caption{original signal}
+		\label{fig:record-orig}
+	\end{subfigure}
+	\begin{subfigure}{0.32\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{E1_comp.png}
+		\caption{compressively sampled signal}
+		\label{fig:record-comp}
+	\end{subfigure}
+	\begin{subfigure}{0.32\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{E1_recon_lasso.png}
+		\caption{reconstructed signal}
+		\label{fig:record-recon-lasso}
+	\end{subfigure}
+	\caption{Temporal and frequency domain representations of the guitar signal at 330 Hz.}
 \end{figure}
 
 \begin{figure}[!htb]
