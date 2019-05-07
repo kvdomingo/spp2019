@@ -16,27 +16,21 @@
   Romberg, and Tao}}]{candes}
 \bibinfo{author}{\bibfnamefont{E.}~\bibnamefont{Cand\`{e}s}},
   \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Romberg}}, \bibnamefont{and}
-  \bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Tao}}, \bibinfo{title}{Robust
-  uncertainty principles: exact signal reconstruction from highly incomplete
-  frequency information}, \eprint{math/0409186v1} (\bibinfo{year}{2006}).
+  \bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Tao}}, in
+  \emph{\bibinfo{booktitle}{Information Theory, IEEE Trans. on.}}
+  (\bibinfo{year}{2006}),  \bibinfo{pages}{489--509}.
 
 \bibitem[{\citenamefont{Donoho}(2006)}]{donoho}
-\bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Donoho}},
-  \bibinfo{title}{Compressed sensing},
-  \href{http://dx.doi.org/10.1109/TIT.2006.871582}{\emph{\bibinfo{journal}{IEEE
-  T. Inform. Theory}}
-  }\href{http://dx.doi.org/10.1109/TIT.2006.871582}{\textbf{\bibinfo{volume}{52}},
-  \bibinfo{pages}{1289}} (\bibinfo{year}{2006}).
+\bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Donoho}}, in
+  \emph{\bibinfo{booktitle}{Information Theory, IEEE Trans. on.}}
+  (\bibinfo{year}{2006}),  \bibinfo{pages}{1289--1306}.
 
 \bibitem[{\citenamefont{Mathew and Premanand}(2016)}]{mathew}
 \bibinfo{author}{\bibfnamefont{M.~R.} \bibnamefont{Mathew}} \bibnamefont{and}
   \bibinfo{author}{\bibfnamefont{B.}~\bibnamefont{Premanand}},
   \bibinfo{title}{Sub-{N}yquist sampling of acoustic signals based on chaotic
-  compressed sensing},
-  \href{http://dx.doi.org/10.1016/j.protcy.2016.05.193}{\emph{\bibinfo{journal}{Proc.
-  Tech.}}
-  }\href{http://dx.doi.org/10.1016/j.protcy.2016.05.193}{\textbf{\bibinfo{volume}{24}},
-  \bibinfo{pages}{941}} (\bibinfo{year}{2016}).
+  compressed sensing}, \emph{\bibinfo{journal}{Procedia Technology}}
+  \textbf{\bibinfo{volume}{24}}, \bibinfo{pages}{941} (\bibinfo{year}{2016}).
 
 \bibitem[{\citenamefont{Andr\'{a}\v{s}
   et~al.}(2018)\citenamefont{Andr\'{a}\v{s}, Dolinsk\'{y}, Michaeli, and
@@ -46,10 +40,8 @@
   \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Michaeli}}, \bibnamefont{and}
   \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{\v{S}aliga}},
   \bibinfo{title}{A time domain reconstruction method of randomly sampled
-  frequency sparse signal},
-  \href{http://dx.doi.org/10.1016/j.measurement.2018.05.065}{\emph{\bibinfo{journal}{Measurement}}
-  }\href{http://dx.doi.org/10.1016/j.measurement.2018.05.065}{\textbf{\bibinfo{volume}{127}}}
-  (\bibinfo{year}{2018}).
+  frequency sparse signal}, \emph{\bibinfo{journal}{Measurement}}
+  \textbf{\bibinfo{volume}{127}} (\bibinfo{year}{2018}).
 
 \bibitem[{\citenamefont{Romero et~al.}(2016)\citenamefont{Romero, Tapang, and
   Saloma}}]{romero16}
@@ -78,7 +70,7 @@
   \bibinfo{title}{Compressed sensing in {P}ython} (\bibinfo{year}{2016}),
   \urlprefix\url{http://www.pyrunner.com/weblog/2016/05/26/compressed-sensing-python/}.
 
-\bibitem[{\citenamefont{Pedregosa et~al.}(2012)\citenamefont{Pedregosa,
+\bibitem[{\citenamefont{Pedregosa et~al.}(2011)\citenamefont{Pedregosa,
   Varoquaux, Gramfort, Michel, Thirion, Grisel, Blondel, Prettenhofer, Weiss,
   Dubourg et~al.}}]{sklearn}
 \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Pedregosa}},
@@ -92,7 +84,8 @@
   \bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{Weiss}},
   \bibinfo{author}{\bibfnamefont{V.}~\bibnamefont{Dubourg}},
   \bibnamefont{et~al.}, \bibinfo{title}{Scikit-learn: Machine learning in
-  {P}ython}, \eprint{1201.0490v4} (\bibinfo{year}{2012}).
+  {P}ython}, \emph{\bibinfo{journal}{Journal of Machine Learning Research}}
+  \textbf{\bibinfo{volume}{12}}, \bibinfo{pages}{2825} (\bibinfo{year}{2011}).
 
 \bibitem[{\citenamefont{Mohimani et~al.}(2008)\citenamefont{Mohimani,
   Babaie-Zadeh, and Jutten}}]{sl0}
@@ -109,10 +102,7 @@
   \bibinfo{author}{\bibfnamefont{S.}~\bibnamefont{Cheng}}, \bibnamefont{and}
   \bibinfo{author}{\bibfnamefont{Z.}~\bibnamefont{Zhou}}, \bibinfo{title}{Image
   compression-encryption scheme based on hyper-chaotic system and 2{D}
-  compressive sensing},
-  \href{http://dx.doi.org/10.1016/j.optlastec.2016.02.018}{\emph{\bibinfo{journal}{Opt.
-  Laser Technol.}}
-  }\href{http://dx.doi.org/10.1016/j.optlastec.2016.02.018}{\textbf{\bibinfo{volume}{82}},
-  \bibinfo{pages}{121}} (\bibinfo{year}{2016}).
+  compressive sensing}, \emph{\bibinfo{journal}{Optics \& Laser Technology}}
+  \textbf{\bibinfo{volume}{82}}, \bibinfo{pages}{121} (\bibinfo{year}{2016}).
 
 \end{thebibliography}

@@ -1,26 +1,30 @@
-@inproceedings{candes,
+@unpublished{candes,
 	title={Robust uncertainty principles: exact signal reconstruction from highly incomplete frequency information},
 	author={Cand\`{e}s, Emmanuel and Romberg, Justin and Tao, Terence},
-	booktitle={Information Theory, IEEE Trans. on.},
 	year={2006},
-	pages={489--509}
+	eprint={math/0409186v1}
 }
 
-@inproceedings{donoho,
- title={Compressed sensing},
-author={Donoho, David},
-booktitle={Information Theory, IEEE Trans. on.},
-year={2006},
-pages ={1289--1306}
+
+@article{donoho,
+	title={Compressed sensing},
+	author={Donoho, David},
+	journal={IEEE T. Inform. Theory},
+	volume={52},
+	number={4},
+	year={2006},
+	pages ={1289--1306},
+	doi={10.1109/TIT.2006.871582}
 }
 
 @article{mathew,
   title = {Sub-{N}yquist sampling of acoustic signals based on chaotic compressed sensing},
   author = {Mathew, Magnel Rose and Premanand, B.},
-  journal = {Procedia Technology},
+  journal = {Proc. Tech.},
   volume = {24},
   pages = {941--948},
-  year = {2016}
+  year = {2016},
+  doi = {10.1016/j.protcy.2016.05.193}
 }
 
 @article{andras,
@@ -28,7 +32,8 @@ pages ={1289--1306}
   author = {Andr\'{a}\v{s}, Imrich and Dolinsk\'{y}, Pavol and Michaeli, L. and \v{S}aliga, J.},
   journal = {Measurement},
   volume = {127},
-  year = {2018}
+  year = {2018},
+  doi = {10.1016/j.measurement.2018.05.065}
 }
 
 @inproceedings{romero16,
@@ -54,20 +59,19 @@ address={Puerto Princesa City, Philippines}
 @misc{pyrunner,
   author = {Taylor, Robert},
   title = {Compressed sensing in {P}ython},
+  booktitle = {Pyrunner},
   year = 2016,
   url = {http://www.pyrunner.com/weblog/2016/05/26/compressed-sensing-python/}
 }
 
-@article{sklearn,
+@unpublished{sklearn,
  title={Scikit-learn: Machine Learning in {P}ython},
  author={Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V.
          and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P.
          and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and
          Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.},
- journal={Journal of Machine Learning Research},
- volume={12},
- pages={2825--2830},
- year={2011}
+ year={2012},
+ eprint={1201.0490v4}
 }
 
 @unpublished{sl0,
@@ -80,8 +84,9 @@ address={Puerto Princesa City, Philippines}
 @article{zhou,
  title={Image compression-encryption scheme based on hyper-chaotic system and 2{D} compressive sensing},
  author={Zhou, Nanrun and Pan, Shumin and Cheng, Shan and Zhou, Zhihong},
- journal={Optics \& Laser Technology},
+ journal={Opt. Laser Technol.},
  volume={82},
  pages={121--133},
- year={2016}
+ year={2016},
+ doi={10.1016/j.optlastec.2016.02.018}
 }
