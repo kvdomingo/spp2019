@@ -1,0 +1,103 @@
+\documentclass[10pt,a4paper,twoside]{article}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\input{spp.dat}
+
+\begin{document}
+
+\title{\TitleFont Frequency domain reconstruction of stochastically sampled signals based on compressive sensing}
+
+
+\author[*\negthickspace]{Kenneth V. Domingo}
+\author[ ]{Maricor N.~Soriano
+\lastauthorsep}
+\affil[ ]{National Institute of Physics, University of the Philippines--Diliman, Quezon City, Philippines}
+\affil[*]{\corremail{kdomingo@nip.upd.edu.ph} }
+
+\maketitle
+\thispagestyle{titlestyle}
+
+
+\section*{List of changes and responses to reviewer comments}
+\medskip
+
+\begin{itemize}
+
+\item References have been fixed and now follow the prescribed SPP format.
+
+\item \textbf{Abstract}, first sentence: ``...workaround to the Nyquist-Shannon sampling theorem.'' $\rightarrow$ ``...workaround to the Nyquist-Shannon sampling theorem (NSST).''
+
+\item \textbf{Abstract}, last sentence: ``...in terms of computation time and reconstruction error (MSE)'' $\rightarrow$ ``...in terms of computation time and reconstruction error (cosine similarity)''
+
+\item \textbf{Section 2}: added subsection 5 (performance evaluation): brief description of cosine similarity.
+
+\item \textbf{Table 1}: replaced MSE with cosine similarity.
+
+\item Reviewer comment:
+
+\begin{quote}
+	Sampling rate: Section 3. Indicate units of sampling rate. It is not a dimensionless parameter.
+\end{quote}
+
+\textbf{Section 3}: ``...and a sampling rate of 1000 was selected'' $\rightarrow$ ``...and a sampling rate of 1 kHz was selected''
+
+\item Reviewer comment:
+
+\begin{quote}
+	Use Fig. 1 for referencing figures mid sentence. Figure 2 is only used when referencing at the beginning of a sentence.
+\end{quote}
+
+All occurences have been corrected.
+
+\item Reviewer comment:
+
+\begin{quote}
+	Consider reordering figures based on order of reference. (Place figure 1 last, as it is also referred to last.)
+\end{quote}
+
+Original Figs. 2-4 are now Figs. 1a-1c. Original Fig. 1 is now Fig. 2.
+
+\item Reviewer comment:
+
+\begin{quote}
+	“Thus, if running were not a constraint” Should be “Thus, if running time were not a constraint“.
+\end{quote}
+
+Item has been corrected.
+
+\item Reviewer comment:
+
+\begin{quote}
+	In relation to the previous comment, the claim that LASSO consistently converges fastest is inaccurate, since OMP outperforms LASSO for small samples (in both computation time and reconstruction accuracy).
+\end{quote}
+
+Item has been corrected. OMP performs faster with low number of samples, but its speed scales faster than SL0 \& LASSO.
+
+\item Reviewer comment:
+
+\begin{quote}
+	While no definite trend could be concluded, it would be nice to explain why OMP performs worse with an increasing number of samples. This result is counterintuitive to the common notion that more samples would lead to a more faithful reconstruction of the signal.
+\end{quote}
+
+Running multiple simulations again revealed that using MSE to quantify reconstruction error may not be appropriate as it yields inconsistent results. Dr. Soriano suggested using cosine similarity instead.
+
+\item Reviewer comment:
+
+\begin{quote}
+	Amplitude values are inconsistent between Figs 2 and 4, differing by 1 order of magnitude. This also does not seem consistent with MSE values obtained in Fig 1b. What are the units used in measuring amplitude?
+\end{quote}
+
+
+
+\item Reviewer comment:
+
+\begin{quote}
+	As I understand the manuscript, the CS dataset is sub-sampled from from the original measurement of the signal at 8kHz. As the “percentage of samples” is increased, does the sample data include the same points from the sub-sampled dataset at a lower percentage of samples? i.e. Does 10\% sampling contain points from 50\% sampling? 
+\end{quote}
+
+The random samples are independent, i.e. samples from the 10\% dataset are not the same as the 50\% dataset, though there is a nonzero probability that some of the samples overlap due to random sampling.
+
+\end{itemize}
+
+\end{document}

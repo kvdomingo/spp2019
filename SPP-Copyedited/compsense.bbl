@@ -1,0 +1,105 @@
+\begin{thebibliography}{9}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname bibnamefont\endcsname\relax
+  \def\bibnamefont#1{#1}\fi
+\expandafter\ifx\csname bibfnamefont\endcsname\relax
+  \def\bibfnamefont#1{#1}\fi
+\expandafter\ifx\csname citenamefont\endcsname\relax
+  \def\citenamefont#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{}\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[1]{\href{http://arxiv.org/abs/#1}{arXiv:#1}}
+
+\bibitem[{\citenamefont{Cand\`{e}s et~al.}(2006)\citenamefont{Cand\`{e}s,
+  Romberg, and Tao}}]{candes}
+\bibinfo{author}{\bibfnamefont{E.}~\bibnamefont{Cand\`{e}s}},
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Romberg}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{T.}~\bibnamefont{Tao}}, \bibinfo{title}{Robust
+  uncertainty principles: exact signal reconstruction from highly incomplete
+  frequency information}, \eprint{math/0409186v1} (\bibinfo{year}{2006}).
+
+\bibitem[{\citenamefont{Donoho}(2006)}]{donoho}
+\bibinfo{author}{\bibfnamefont{D.}~\bibnamefont{Donoho}},
+  \bibinfo{title}{Compressed sensing},
+  \href{http://dx.doi.org/10.1109/TIT.2006.871582}{\emph{\bibinfo{journal}{IEEE
+  Trans. Inf. Theory}}
+  }\href{http://dx.doi.org/10.1109/TIT.2006.871582}{\textbf{\bibinfo{volume}{52}},
+  \bibinfo{pages}{1289}} (\bibinfo{year}{2006}).
+
+\bibitem[{\citenamefont{Mathew and Premanand}(2016)}]{mathew}
+\bibinfo{author}{\bibfnamefont{M.~R.} \bibnamefont{Mathew}} \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{B.}~\bibnamefont{Premanand}},
+  \bibinfo{title}{Sub-{N}yquist sampling of acoustic signals based on chaotic
+  compressed sensing},
+  \href{http://dx.doi.org/10.1016/j.protcy.2016.05.193}{\emph{\bibinfo{journal}{Proc.
+  Technol.}}
+  }\href{http://dx.doi.org/10.1016/j.protcy.2016.05.193}{\textbf{\bibinfo{volume}{24}},
+  \bibinfo{pages}{941}} (\bibinfo{year}{2016}).
+
+\bibitem[{\citenamefont{Andr\'{a}\v{s}
+  et~al.}(2018)\citenamefont{Andr\'{a}\v{s}, Dolinsk\'{y}, Michaeli, and
+  \v{S}aliga}}]{andras}
+\bibinfo{author}{\bibfnamefont{I.}~\bibnamefont{Andr\'{a}\v{s}}},
+  \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Dolinsk\'{y}}},
+  \bibinfo{author}{\bibfnamefont{L.}~\bibnamefont{Michaeli}}, \bibnamefont{and}
+  \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{\v{S}aliga}},
+  \bibinfo{title}{A time domain reconstruction method of randomly sampled
+  frequency sparse signal},
+  \href{http://dx.doi.org/10.1016/j.measurement.2018.05.065}{\emph{\bibinfo{journal}{Measurement}}
+  }\href{http://dx.doi.org/10.1016/j.measurement.2018.05.065}{\textbf{\bibinfo{volume}{127}}}
+  (\bibinfo{year}{2018}).
+
+\bibitem[{\citenamefont{Romero et~al.}(2016)\citenamefont{Romero, Tapang, and
+  Saloma}}]{romero16}
+\bibinfo{author}{\bibfnamefont{R.~A.} \bibnamefont{Romero}},
+  \bibinfo{author}{\bibfnamefont{G.~A.} \bibnamefont{Tapang}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{C.~A.}
+  \bibnamefont{Saloma}}, in \emph{\bibinfo{booktitle}{Proceedings of the
+  Samahang Pisika ng Pilipinas Physics Conference}}
+  (\bibinfo{address}{University of the Philippines Visayas, Iloilo City,
+  Philippines}, \bibinfo{year}{2016}), vol.~\bibinfo{volume}{34},
+  \bibinfo{pages}{\href{https://paperview.spp-online.org/proceedings/article/view/376}{SPP-2016-PA-14}}.
+
+\bibitem[{\citenamefont{Romero et~al.}(2018)\citenamefont{Romero, Tapang, and
+  Saloma}}]{romero18}
+\bibinfo{author}{\bibfnamefont{R.~A.} \bibnamefont{Romero}},
+  \bibinfo{author}{\bibfnamefont{G.~A.} \bibnamefont{Tapang}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{C.~A.}
+  \bibnamefont{Saloma}}, in \emph{\bibinfo{booktitle}{Proceedings of the
+  Samahang Pisika ng Pilipinas Physics Conference}} (\bibinfo{address}{Puerto
+  Princesa City, Philippines}, \bibinfo{year}{2018}),
+  vol.~\bibinfo{volume}{36},
+  \bibinfo{pages}{\href{https://paperview.spp-online.org/proceedings/article/view/SPP-2018-PB-21}{SPP-2018-PB-21}}.
+
+\bibitem[{\citenamefont{Taylor}(2016)}]{pyrunner}
+\bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{Taylor}},
+  \bibinfo{title}{Compressed sensing in {P}ython} (\bibinfo{year}{2016}),
+  \urlprefix\url{http://www.pyrunner.com/weblog/2016/05/26/compressed-sensing-python/}.
+
+\bibitem[{\citenamefont{Pedregosa et~al.}(2012)\citenamefont{Pedregosa,
+  Varoquaux, Gramfort, Michel, Thirion, Grisel, Blondel, Prettenhofer, Weiss,
+  Dubourg et~al.}}]{sklearn}
+\bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Pedregosa}},
+  \bibinfo{author}{\bibfnamefont{G.}~\bibnamefont{Varoquaux}},
+  \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Gramfort}},
+  \bibinfo{author}{\bibfnamefont{V.}~\bibnamefont{Michel}},
+  \bibinfo{author}{\bibfnamefont{B.}~\bibnamefont{Thirion}},
+  \bibinfo{author}{\bibfnamefont{O.}~\bibnamefont{Grisel}},
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Blondel}},
+  \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Prettenhofer}},
+  \bibinfo{author}{\bibfnamefont{R.}~\bibnamefont{Weiss}},
+  \bibinfo{author}{\bibfnamefont{V.}~\bibnamefont{Dubourg}},
+  \bibnamefont{et~al.}, \bibinfo{title}{Scikit-learn: Machine learning in
+  {P}ython}, \eprint{1201.0490v4} (\bibinfo{year}{2012}).
+
+\bibitem[{\citenamefont{Mohimani et~al.}(2008)\citenamefont{Mohimani,
+  Babaie-Zadeh, and Jutten}}]{sl0}
+\bibinfo{author}{\bibfnamefont{H.}~\bibnamefont{Mohimani}},
+  \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Babaie-Zadeh}},
+  \bibnamefont{and} \bibinfo{author}{\bibfnamefont{C.}~\bibnamefont{Jutten}},
+  \bibinfo{title}{A fast approach for overcomplete sparse decomposition based
+  on smoothed $\ell^0$ norm}, \eprint{0809.2508v2} (\bibinfo{year}{2008}).
+
+\end{thebibliography}
